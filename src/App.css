@@ -1,12 +1,91 @@
 .container{
-  background-color: red;
+  background-color: rgb(235, 235, 235);
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.main-text{
+
+.todolist-box{
+  position: relative;
+  width: 50%;
+  min-height: max-content;
+  max-height: 60%;
+  overflow-y: auto;
+  background-color: white;
+  border-radius: 14px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.096);
+}
+
+.todolist-header{
+  position: relative;
+  width: 100%;
+  height: max-content;
+  padding: 10px 0px;
+  border-bottom: 1px solid rgb(223, 222, 222);
+  display: flex;
+  justify-content: end;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+
+.todolist-header input{
+  padding: 15px 30px;
+  width: 70%;
+  margin: 0px 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.226);
+  direction: rtl;
+  outline: none;
+  text-align: right;
+  transition: 500ms;
+}
+
+.todolist-header input:focus{
+  border-color: cornflowerblue;
+}
+
+.todolist-header button{
+  padding: 15px 30px;
+  border-radius: 6px;
+  border: none;
+  background-color: cornflowerblue;
   color:white;
-  font-size:20px;
+  outline: none;
 }
 
-.Auth-title{
-  color:orange;
+.todo-box{
+  position: relative;
+  width: 90%;
+  height: 60px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  margin: 10px 0px;
+  flex-direction: row-reverse;
+}
+
+.todobox-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* gap: 10px; */
+  /* padding: 10px 0px; */
+}
+.todobox-checked{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: rgb(196, 196, 196);
+  border-radius: 100%;
+  margin: 0px 10px;
+  transition: 200ms;
+  cursor: pointer;
 }
