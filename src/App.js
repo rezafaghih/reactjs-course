@@ -1,38 +1,52 @@
 import './App.css';
-import { useEffect, useState, useRef, createContext } from 'react';
-import {Auth} from "./components/Auth"
-
-export const ThemeContext = createContext("light")
+import { useState, useEffect, useRef } from 'react';
+import { TodoBox } from './components/todoBox';
+import axios from 'axios';
+import {ProductBox} from "./components/product-box"
 
 function App() {
-  const [number, setNumber] = useState(0)
-  const [name, setName] = useState('')
-  const [isAppReady, setAppReadey] = useState(false)
-  const [theme , setTheme] = useState('dark')
-  const input = useRef();
-  const changeName =()=>{
-    setName("reza")
-  }
-  useEffect(()=>{
-    if (!isAppReady){
-      changeName()
-      setAppReadey(true)
-    }
-  }, [isAppReady])
 
+  const [productLimit, setProductLimit] = useState(5);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [productList, setProductList] = useState([]);
+
+  const fetchProducts = ()=>{
+    axios.get("https://fakestoreapi.com/products").then(
+      (response)=>{    
+        for (const key in response.data) {
+            const thisData = response.data[key];
+            const newList = [thisData.title, thisData.image, thisData.price, thisData.rating.rate, thisData.description];
+            
+            setProductList((prev) => ([
+              ...prev,
+               newList,
+            ]));
+        }
+        setIsLoaded(true);
+      }
+    ).catch(
+      (err)=>{
+        console.log(err)
+      }
+    )
+  }
+
+
+  useEffect(()=>{
+    if (!isLoaded){
+      fetchProducts();
+    }
+  }, [isLoaded])
 
   return (
-    <ThemeContext.Provider value = {{theme, setTheme}}>
-      <div className = "container">
-        <Auth num = {number}/>
-        <h1 className='main-text'>Hello {name}</h1>
-        <span style={{fontSize:"20px", backgroundColor:"pink"}}>{number}</span>
-        <input type='text' ref={input}/>
-        <span>website theme is {theme}</span>
-        <button onClick={()=>{setNumber(number+1)}}>click on me</button>
+      <div className='container'>
+        {
+          productList.map((value, index)=>{
+            return (<ProductBox key = {index} title = {value[0]} image = {value[1]} description = {value[4]} price = {value[2]} rate = {value[3]}/>);
+          })
+        }
       </div>
-    </ThemeContext.Provider>
-  );
+  )
 }
 
 export default App;

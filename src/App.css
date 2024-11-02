@@ -1,91 +1,68 @@
 .container{
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(221, 221, 221);
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
 }
 
 
-.todolist-box{
+.product-box{
   position: relative;
-  width: 50%;
-  min-height: max-content;
-  max-height: 60%;
-  overflow-y: auto;
-  background-color: white;
-  border-radius: 14px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.096);
-}
-
-.todolist-header{
-  position: relative;
-  width: 100%;
-  height: max-content;
-  padding: 10px 0px;
-  border-bottom: 1px solid rgb(223, 222, 222);
-  display: flex;
-  justify-content: end;
-  flex-direction: row-reverse;
-  align-items: center;
-}
-
-.todolist-header input{
-  padding: 15px 30px;
-  width: 70%;
-  margin: 0px 20px;
-  border-radius: 6px;
-  border: 1px solid rgba(0, 0, 0, 0.226);
-  direction: rtl;
-  outline: none;
-  text-align: right;
-  transition: 500ms;
-}
-
-.todolist-header input:focus{
-  border-color: cornflowerblue;
-}
-
-.todolist-header button{
-  padding: 15px 30px;
-  border-radius: 6px;
-  border: none;
-  background-color: cornflowerblue;
-  color:white;
-  outline: none;
-}
-
-.todo-box{
-  position: relative;
-  width: 90%;
-  height: 60px;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  margin: 10px 0px;
-  flex-direction: row-reverse;
-}
-
-.todobox-container{
-  width: 100%;
+  width: 300px;
+  height: 400px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* gap: 10px; */
-  /* padding: 10px 0px; */
+  justify-content: start;
+  border-radius: 15px;
+  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.247);
+  background-color: white;
+  padding: 10px;
 }
-.todobox-checked{
-  position: relative;
-  width: 30px;
-  height: 30px;
-  background-color: rgb(196, 196, 196);
-  border-radius: 100%;
-  margin: 0px 10px;
-  transition: 200ms;
-  cursor: pointer;
+
+.product-box img{
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-box h4{
+  inline-size: 100%;
+  overflow: hidden;
+  text-wrap: nowrap;
+  text-overflow: ellipsis;
+}
+
+.product-box p{
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limits the text to 3 lines */
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.row-product-box{
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 97%;
+  left: 1.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.row-stars{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.row-stars svg{
+  color:gray;
 }
